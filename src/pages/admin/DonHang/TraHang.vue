@@ -1,0 +1,3 @@
+<template>
+  Tra hang
+</template>

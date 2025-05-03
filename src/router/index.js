@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from '@/pages/Client/Home/Home.vue';
-import DanhSachSanPham from "@/pages/Client/DanhSachSanPham/DanhSachSanPham.vue";
+import DanhSachTours from "@/pages/Client/DanhSachSanPham/DanhSachSanPham.vue";
 import ChiTietTour from "@/pages/Client/ChiTietTour/ChiTietTour.vue";
 import BaoHiemTour from "@/pages/Client/BaoHiemTour/BaoHiemTour.vue";
 import Visa from "@/pages/Client/Visa/Visa.vue";
@@ -14,6 +14,17 @@ import GioHang from "@/pages/Client/GioHang/GioHang.vue";
 import DangNhap from "@/pages/Client/Auth/DangNhap.vue";
 import DangKi from "@/pages/Client/Auth/DangKi.vue";
 import TourYeuThich from "@/pages/Client/Auth/TourYeuThich.vue";
+import Dashboard from "@/pages/admin/Dashboard/Dashboard.vue";
+import LayoutPageAdmin from "@/pages/admin/LayoutPageAdmin.vue";
+import DanhSachDonHang from "@/pages/admin/DonHang/DanhSachDonHang.vue";
+import DonHangNhap from "@/pages/admin/DonHang/DonHangNhap.vue";
+import TraHang from "@/pages/admin/DonHang/TraHang.vue";
+import DonChuaHoanTat from "@/pages/admin/DonHang/DonChuaHoanTat.vue";
+import DanhSachSanPham from "@/pages/admin/SanPham/DanhSachSanPham.vue";
+import DanhMucSanPham from "@/pages/admin/SanPham/DanhMucSanPham.vue";
+import BangGia from "@/pages/admin/SanPham/BangGia.vue";
+import KhachHang from "@/pages/admin/KhachHang/KhachHang.vue";
+import NhomKhachHang from "@/pages/admin/KhachHang/NhomKhachHang.vue";
 
 const routes = [
     {
@@ -23,7 +34,7 @@ const routes = [
     },
     {
       path: "/danh-sach-san-pham",
-      component: DanhSachSanPham,
+      component: DanhSachTours,
       name: "danh-sach-san-pham",
     },
     {
@@ -86,6 +97,66 @@ const routes = [
       component: TourYeuThich,
       name: "tour-yeu-thich",
     },
+    {
+        path : "/admin",
+        component: LayoutPageAdmin,
+        meta : {
+            layout : "admin"
+        },
+        children: [
+            {
+                path: "dashboard",
+                component: Dashboard,
+                name: "dashboard",
+            },
+            {
+                path: "orders",
+                component: DanhSachDonHang,
+                name : 'orders'
+            },
+            {
+                path: "draft_orders",
+                component: DonHangNhap,
+                name : "draft_orders"
+            },
+            {
+                path: "order_returns",
+                component: TraHang,
+                name : "order_returns"
+            },
+            {
+                path: "checkouts",
+                component: DonChuaHoanTat,
+                name : "checkouts"
+            },
+            {
+                path: "products",
+                component: DanhSachSanPham,
+                name : "products"
+            },
+            {
+                path: "collections",
+                component: DanhMucSanPham,
+                name : "collections"
+            },
+            {
+                path: "catalogs",
+                component: BangGia,
+                name : "catalogs"
+            },
+            {
+                path: "customers",
+                component: KhachHang,
+                name : "customers"
+            },
+            {
+                path: "customer_groups",
+                component: NhomKhachHang,
+                name : "customer_groups"
+            },
+        ]
+    }
+
 ]
 
 
