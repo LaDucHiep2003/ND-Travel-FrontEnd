@@ -38,6 +38,13 @@
                   </svg>
                 </div>
                 <span class="flex-1 ml-1 font-medium">Đơn hàng</span>
+                <div class="flex h-auto items-center ml-1">
+                  <span class="flex">
+                    <span class="inline-flex items-center bg-[#eeefef] rounded-full py-[2px] px-2 outline-0 relative">
+                      <span class="font-550 text-black text-xs">1</span>
+                    </span>
+                  </span>
+                </div>
               </RouterLink>
             </div>
             <div v-if="$route.name === 'orders' || $route.name === 'draft_orders' || $route.name === 'order_returns' || $route.name === 'checkouts'">
@@ -362,7 +369,12 @@
     </div>
   </aside>
 </template>
-<script setup lang="ts">
+<script>
+export default {
+  mounted() {
+    console.log("Route name:", this.$route.name);
+  }
+}
 </script>
 
 <style scoped>

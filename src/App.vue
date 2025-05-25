@@ -11,10 +11,7 @@ export default {
 <template>
 
   <component :is="layout">
-
     <RouterView />
-
   </component>
-  
-  
+
 </template>

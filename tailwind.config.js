@@ -33,7 +33,10 @@ export default {
         "color-24" : "rgb(70, 81, 95)",
         "color-25" : "rgb(0, 136, 255)",
         "color-26" : "rgb(116, 124, 135)",
-        "color-27" : "rgb(70, 81, 95)"
+        "color-27" : "rgb(70, 81, 95)",
+        "color-28" : "rgb(0, 136, 255)",
+        "color-29" : "rgb(211, 213, 215)",
+        "color-30" : "rgb(243, 244, 245)"
       },
       fontSize:{
         "20px" : "20px"

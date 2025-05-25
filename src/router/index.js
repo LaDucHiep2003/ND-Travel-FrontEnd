@@ -25,6 +25,7 @@ import DanhMucSanPham from "@/pages/admin/SanPham/DanhMucSanPham.vue";
 import BangGia from "@/pages/admin/SanPham/BangGia.vue";
 import KhachHang from "@/pages/admin/KhachHang/KhachHang.vue";
 import NhomKhachHang from "@/pages/admin/KhachHang/NhomKhachHang.vue";
+import TaoDonHang from "@/pages/admin/DonHang/TaoDonHang.vue";
 
 const routes = [
     {
@@ -112,51 +113,68 @@ const routes = [
             {
                 path: "orders",
                 component: DanhSachDonHang,
-                name : 'orders'
+                name : 'orders',
+            },
+            {
+                path: "orders/create",
+                component: TaoDonHang,
+                name : 'createOrder',
             },
             {
                 path: "draft_orders",
                 component: DonHangNhap,
-                name : "draft_orders"
+                name : "draft_orders",
             },
             {
                 path: "order_returns",
                 component: TraHang,
-                name : "order_returns"
+                name : "order_returns",
             },
             {
                 path: "checkouts",
                 component: DonChuaHoanTat,
-                name : "checkouts"
+                name : "checkouts",
             },
             {
                 path: "products",
                 component: DanhSachSanPham,
-                name : "products"
+                name : "products",
             },
             {
                 path: "collections",
                 component: DanhMucSanPham,
-                name : "collections"
+                name : "collections",
+                meta : {
+                    layout : "admin"
+                },
             },
             {
                 path: "catalogs",
                 component: BangGia,
-                name : "catalogs"
+                name : "catalogs",
+                meta : {
+                    layout : "admin"
+                },
             },
             {
                 path: "customers",
                 component: KhachHang,
-                name : "customers"
+                name : "customers",
+                meta : {
+                    layout : "admin"
+                },
             },
             {
                 path: "customer_groups",
                 component: NhomKhachHang,
-                name : "customer_groups"
+                name : "customer_groups",
+                meta : {
+                    layout : "admin"
+                },
             },
-        ]
+        ],
+        strict: true,
     }
-
 ]
 
 
