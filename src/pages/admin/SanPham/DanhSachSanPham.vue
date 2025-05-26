@@ -18,7 +18,7 @@
             </button>
           </div>
           <div class="ml-4">
-            <RouterLink :to="{ name : 'createOrder'}" class="flex justify-center items-center relative text-center rounded-md min-w-9 min-h-9 py-[7px]
+            <RouterLink :to="{ name : 'create_product'}" class="flex justify-center items-center relative text-center rounded-md min-w-9 min-h-9 py-[7px]
                 px-4 border border-transparent text-white bg-color-28 hover:bg-[#33a0ff]">
               <span class="flex justify-center items-center relative font-550">
                 <span class="mr-1 h-5 w-5 block max-w-full max-h-full m-auto text-white">
@@ -184,8 +184,8 @@
         </li>
       </ul>
       <!--      Loc Don Hang-->
-      <LocSanPham />
-      <TableSanPham :status="currentTab" />
+      <LocSanPham @filter="handleFilter"  />
+      <TableSanPham :key="currentTab" :status="currentTab" :searchText="searchText" />
       <PhanTrang />
     </div>
   </div>
@@ -202,7 +202,13 @@ export default {
   },
   data() {
     return {
-      currentTab: 'inactive',
+      currentTab: 'all',
+      searchText: ''
+    }
+  },
+  methods:{
+    handleFilter(filter) {
+      this.searchText = filter.search
     }
   },
   computed: {
@@ -210,8 +216,8 @@ export default {
       return {
         all: 'Tất cả',
         active: 'Đang mở bán',
-        inactive: 'Hết chỗ',
-        sold_out: 'Đã khởi hành',
+        inactive: 'Đã khởi hành',
+        sold_out: 'Hết chỗ',
         ended: 'Đã kết thúc'
       }
     }

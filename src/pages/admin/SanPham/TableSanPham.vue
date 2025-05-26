@@ -172,7 +172,11 @@
                         </svg>
                       </span>
                     </span>
-                    <span class="font-450 text-xs">{{ item.status == 'active' ? 'Đang mở bán':'Hết chỗ' }}</span>
+                      <span class="font-450 text-xs" v-if="item.status === 'active'">Đang mở bán</span>
+                      <span class="font-450 text-xs" v-else-if="item.status === 'inactive'">Ngừng bán</span>
+                      <span class="font-450 text-xs" v-else-if="item.status === 'sold_out'">Hết chỗ</span>
+                      <span class="font-450 text-xs" v-else-if="item.status === 'ended'">Đã kết thúc</span>
+                      <span class="font-450 text-xs" v-else>Không xác định</span>
                   </span>
                 </div>
               </div>
@@ -197,13 +201,12 @@ export default {
   methods:{
     async loadTours(){
       const params = {
-        status : this.status
+        status : this.status,
+        title : this.searchText
       }
-      console.log(params)
       const result = await getTours(params);
       if(result){
         this.dataTours = result;
-        console.log(this.status)
       }
     }
   },
@@ -215,6 +218,10 @@ export default {
   props:{
     status:{
       type : String
+    },
+    searchText: {
+      type: String,
+      default: ''
     }
   },
   mounted() {

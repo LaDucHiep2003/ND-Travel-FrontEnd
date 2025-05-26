@@ -26,6 +26,7 @@ import BangGia from "@/pages/admin/SanPham/BangGia.vue";
 import KhachHang from "@/pages/admin/KhachHang/KhachHang.vue";
 import NhomKhachHang from "@/pages/admin/KhachHang/NhomKhachHang.vue";
 import TaoDonHang from "@/pages/admin/DonHang/TaoDonHang.vue";
+import TaoSanPham from "@/pages/admin/SanPham/TaoSanPham.vue";
 
 const routes = [
     {
@@ -139,6 +140,11 @@ const routes = [
                 path: "products",
                 component: DanhSachSanPham,
                 name : "products",
+            },
+            {
+                path: "products/create",
+                component: TaoSanPham,
+                name : "create_product",
             },
             {
                 path: "collections",
