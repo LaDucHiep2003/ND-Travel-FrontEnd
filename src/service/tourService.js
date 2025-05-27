@@ -9,3 +9,23 @@ export const getTours = async (params) => {
     const result = await get(`tours?${query}`);
     return result;
 }
+
+export const createTour = async (option) =>{
+    const result = await post(`tours`, option);
+    return result;
+}
+
+export const deleteTour = async (params) => {
+    const searchParams = new URLSearchParams();
+    for (const key in params) {
+        const value = params[key];
+        if (Array.isArray(value)) {
+            value.forEach(v => searchParams.append(key, v));
+        } else {
+            searchParams.append(key, value);
+        }
+    }
+    const query = searchParams.toString();
+    const result = await del(`tours?${query}`);
+    return result;
+}

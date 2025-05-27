@@ -12,6 +12,8 @@
     "@headlessui/vue": "^1.7.23",
     "@splidejs/vue-splide": "^0.6.12",
     "@tinymce/tinymce-vue": "^4.0.7",
+    "@vuepic/vue-datepicker": "^11.0.2",
+    "date-fns": "^4.1.0",
     "element-plus": "^2.8.2",
     "highcharts": "^12.2.0",
     "highcharts-vue": "^2.0.1",

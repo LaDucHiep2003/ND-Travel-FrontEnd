@@ -3,7 +3,7 @@
     <div class="py-4">
       <div class="flex justify-start min-h-8 items-center">
         <div class="pr-4">
-          <button class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 p-1.5
+          <button @click="handleBack" class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 p-1.5
             border border-color-29 bg-white hover:bg-color-30">
             <span class="flex justify-center items-center relative">
               <span class="block w-5 h-5 max-w-full max-h-full m-auto text-color-22">
@@ -31,11 +31,11 @@
               <div class="-mt-4 -ml-4">
                 <div class="mt-4 ml-5">
                   <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                    <label class="text-color-24 css-1ypmoi1">Tên sản phẩm</label>
+                    <label for="title" class="text-color-24 css-1ypmoi1">Tên sản phẩm</label>
                   </div>
                   <div class="flex items-center gap-2 relative font-450 text-sm">
-                    <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                           type="text" placeholder="Nhập tên sản phẩm" style="box-shadow: none;outline: none;">
+                    <input id="title" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                           type="text" v-model="dataSent.title" placeholder="Nhập tên sản phẩm" style="box-shadow: none;outline: none;">
                     <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                   </div>
                 </div>
@@ -43,21 +43,21 @@
                   <div class="flex justify-between items-center gap-5">
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Khởi hành </label>
+                        <label for="departure_from" class="text-color-24 css-1ypmoi1">Khởi hành </label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                               type="text" placeholder="Nhập địa điểm khởi hành" style="box-shadow: none;outline: none;">
+                        <input id="departure_from" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                               type="text" v-model="dataSent.departure_from" placeholder="Nhập địa điểm khởi hành" style="box-shadow: none;outline: none;">
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Điểm đến</label>
+                        <label for="destination" class="text-color-24 css-1ypmoi1">Điểm đến</label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                               type="text" placeholder="Nhập điểm đến" style="box-shadow: none;outline: none;">
+                        <input id="destination" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                               type="text" v-model="dataSent.destination" placeholder="Nhập điểm đến" style="box-shadow: none;outline: none;">
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
@@ -67,21 +67,21 @@
                   <div class="flex justify-between items-center gap-5">
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Thời gian </label>
+                        <label for="duration" class="text-color-24 css-1ypmoi1">Thời gian </label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                               type="text" placeholder="Nhập thời gian du lịch" style="box-shadow: none;outline: none;">
+                        <input id="duration" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                               type="text" v-model="dataSent.duration" placeholder="Nhập thời gian du lịch" style="box-shadow: none;outline: none;">
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Số chỗ</label>
+                        <label for="seats" class="text-color-24 css-1ypmoi1">Số chỗ</label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                               type="text" placeholder="Nhập số chỗ" style="box-shadow: none;outline: none;">
+                        <input id="seats" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                               type="text" v-model="dataSent.seats" placeholder="Nhập số chỗ" style="box-shadow: none;outline: none;">
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
@@ -91,24 +91,37 @@
                   <div class="flex justify-between items-center gap-5">
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Di chuyển bằng</label>
+                        <label for="transport" class="text-color-24 css-1ypmoi1">Di chuyển bằng</label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                               type="text" placeholder="Nhập phương tiện di chuyển" style="box-shadow: none;outline: none;">
+                        <input id="transport" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                               type="text" v-model="dataSent.transport" placeholder="Nhập phương tiện di chuyển" style="box-shadow: none;outline: none;">
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Vị trí</label>
+                        <label class="text-color-24 css-1ypmoi1">Ngày khởi hành</label>
                       </div>
-                      <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                               type="text" placeholder="Nhập link gg vị trí" style="box-shadow: none;outline: none;">
-                        <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
+                      <div class="relative font-450 text-sm w-full">
+                        <VueDatePicker
+                            v-model="dataSent.departure_date"
+                            :enable-time-picker="false"
+                            input-class="border min-h-9 py-2 px-3 rounded-md w-full text-left"
+                            placeholder="Chọn ngày khởi hành"
+                        />
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="mt-4 ml-5">
+                  <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
+                    <label for="location" class="text-color-24 css-1ypmoi1">Vị trí</label>
+                  </div>
+                  <div class="flex items-center gap-2 relative font-450 text-sm">
+                    <input id="location" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                           type="text" v-model="dataSent.location" placeholder="Nhập link gg vị trí" style="box-shadow: none;outline: none;">
+                    <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                   </div>
                 </div>
                 <div class="mt-4 ml-5">
@@ -124,6 +137,7 @@
                           toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                         }"
                         initial-value=""
+                        v-model="dataSent.description"
                     />
                   </div>
                 </div>
@@ -140,6 +154,7 @@
                           toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                         }"
                         initial-value=""
+                        v-model="dataSent.itinerary"
                     />
                   </div>
                 </div>
@@ -157,22 +172,22 @@
                   <div class="flex justify-between items-center gap-5">
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Giá người lớn</label>
+                        <label for="price_adult" class="text-color-24 css-1ypmoi1">Giá người lớn</label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 bg-transparent w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
-                               type="number" placeholder="Nhập giá cho người lớn" style="box-shadow: none;outline: none;">
+                        <input id="price_adult" class="resize-none z-30 bg-transparent w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
+                               type="number" v-model="dataSent.price_adult" placeholder="Nhập giá cho người lớn" style="box-shadow: none;outline: none;">
                         <div class="relative z-20 text-color-26 ml-1 mr-3">₫</div>
                         <div class="bg-transparent border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Giá trẻ em</label>
+                        <label for="price_child" class="text-color-24 css-1ypmoi1">Giá trẻ em</label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none bg-transparent z-30 w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
-                               type="number" placeholder="Nhập giá trẻ em" style="box-shadow: none;outline: none;">
+                        <input id="price_child" class="resize-none bg-transparent z-30 w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
+                               type="number" v-model="dataSent.price_child" placeholder="Nhập giá trẻ em" style="box-shadow: none;outline: none;">
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
@@ -184,11 +199,11 @@
                   <div class="flex justify-between items-center gap-5">
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                        <label class="text-color-24 css-1ypmoi1">Giá em bé</label>
+                        <label for="price_infant" class="text-color-24 css-1ypmoi1">Giá em bé</label>
                       </div>
                       <div class="flex items-center gap-2 relative font-450 text-sm">
-                        <input class="resize-none z-30 bg-transparent w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
-                               type="number" placeholder="Nhập giá cho người lớn" style="box-shadow: none;outline: none;">
+                        <input id="price_infant" class="resize-none z-30 bg-transparent w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
+                               type="number" v-model="dataSent.price_infant" placeholder="Nhập giá cho người lớn" style="box-shadow: none;outline: none;">
                         <div class="relative z-20 text-color-26 ml-1 mr-3">₫</div>
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
@@ -217,7 +232,7 @@
                           <path fill="currentColor" d="M21 13.286h-7.714v7.714h-2.572v-7.714h-7.714v-2.572h7.714v-7.714h2.572v7.714h7.714z"></path>
                         </svg>
                       </span>
-                      <p>Kéo thả hoặc <span class="text-color-28 font-550">thêm ảnh từ Url</span></p>
+                      <p>Kéo thả hoặc <span @click="toggleAddUrl" class="text-color-28 font-550 cursor-pointer">thêm ảnh từ Url</span></p>
                     </div>
                     <span class="font-550">
                       <span class="text-color-28">Tải ảnh lên từ thiết bị</span>
@@ -348,19 +363,20 @@
         </div>
       </div>
     </div>
+
     <div class="py-4 border-t border-color-29">
       <div class="flex justify-end gap-4">
-        <button class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 py-2 px-4
+        <button @click="handleSubmit" class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 py-2 px-4
         border border-transparent text-white bg-color-28 hover:opacity-70">
           <span class="font-550">Thêm sản phẩm</span>
         </button>
       </div>
     </div>
   </div>
-  <div class="hidden">
+  <div :class="{ 'block' : openAddUrl, 'hidden' : !openAddUrl}">
     <div class="opacity-1 fixed inset-0 block animation z-[519]" style="background-color: rgba(0, 0, 0, 0.5);"></div>
     <div class="flex justify-center inset-0 flex-col top-0 left-0 z-[519] fixed items-center">
-      <div class="relative mx-auto rounded-md  max-w-[700px] flex flex-col w-full max-h-[calc(-64px-100vh)]"
+      <div class="relative mx-auto rounded-md  max-w-[700px] flex flex-col justify-center w-full max-h-[calc(-64px-100vh)]"
            style="box-shadow: rgba(0, 0, 0, 0.2) 0px 26px 80px, rgba(0, 0, 0, 0.2) 0px 0px 1px;">
         <div class="bg-white rounded-md">
           <div class="py-2 px-5 border border-color-29 rounded-tr-md rounded-tl-md">
@@ -368,7 +384,7 @@
               <div class="flex-1 text-lg font-550">Thêm ảnh từ URL</div>
               <div>
                 <span class="inline-block text-color-22">
-                  <button class="inline-flex relative justify-center items-center text-center min-w-9 min-h-9 py-2 bg-white">
+                  <button @click="toggleAddUrl" class="inline-flex relative justify-center items-center text-center min-w-9 min-h-9 py-2 bg-white">
                     <span class="flex justify-center items-center">
                       <span class="w-5 h-5 block m-auto max-w-full max-h-full">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
@@ -385,11 +401,11 @@
             <div class="flex flex-col justify-center gap-4">
               <div>
                 <div class="flex justify-between items-baseline break-words flex-wrap pb-1">
-                  <label class="text-color-24">Đường dẫn ảnh</label>
+                  <label for="thumbnail" class="text-color-24">Đường dẫn ảnh</label>
                 </div>
                 <div class="flex items-center gap-2 relative font-450 text-sm">
-                  <input class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                         type="text" placeholder="https://" style="box-shadow: none;outline: none;">
+                  <input id="thumbnail" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                         type="text" v-model="dataSent.thumbnail" placeholder="https://" style="box-shadow: none;outline: none;">
                   <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                 </div>
               </div>
@@ -399,11 +415,11 @@
             <div class="flex flex-row justify-between gap-4">
               <div></div>
               <div class="flex flex-row justify-between gap-4">
-                <button class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 py-2 px-4
+                <button @click="toggleAddUrl" class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 py-2 px-4
                    bg-white border border-color-28 hover:opacity-70">
                   <span class="font-550 text-color-28">Hủy</span>
                 </button>
-                <button class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 py-2 px-4
+                <button @click="toggleAddUrl" class="inline-flex relative justify-center items-center text-center rounded-md min-w-9 min-h-9 py-2 px-4
                     border border-transparent text-white bg-color-28 hover:opacity-70">
                   <span class="font-550">Xác nhận</span>
                 </button>
@@ -415,16 +431,51 @@
     </div>
   </div>
 </template>
-
 <script>
 import Editor from '@tinymce/tinymce-vue'
+import {createTour} from "@/service/tourService.js";
+import { format } from 'date-fns';
 export default {
   components:{
     Editor
   },
   data() {
     return {
-
+      openAddUrl : false,
+      dataSent:{
+        title : '',
+        thumbnail : '',
+        departure_from : '',
+        destination : '',
+        duration : '',
+        seats : '',
+        transport : '',
+        description : '',
+        itinerary : '',
+        location : '',
+        price_adult : 0,
+        price_child : 0,
+        price_infant : 0,
+        departure_date : new Date(),
+      },
+      format : 'YYYY-MM-DD'
+    }
+  },
+  methods:{
+    toggleAddUrl(){
+      this.openAddUrl = !this.openAddUrl;
+    },
+    async handleSubmit(){
+      const result = await createTour({
+        ...this.dataSent,
+        departure_date: format(new Date(this.dataSent.departure_date), 'yyyy-MM-dd')
+      });
+      if(result){
+        this.$router.push({ name : 'products'})
+      }
+    },
+    handleBack(){
+      this.$router.back()
     }
   }
 }

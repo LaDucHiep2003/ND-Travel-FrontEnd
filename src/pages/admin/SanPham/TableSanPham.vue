@@ -62,7 +62,7 @@
                     </span>
                   </span>
               </button>
-              <button v-if="hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
+              <button @click="handleDelete" v-if="hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
                 <span>Xóa</span>
               </button>
             </th>
@@ -189,7 +189,7 @@
 </template>
 
 <script>
-import {getTours} from "@/service/tourService.js";
+import {deleteTour, getTours} from "@/service/tourService.js";
 
 export default {
   data() {
@@ -207,6 +207,14 @@ export default {
       const result = await getTours(params);
       if(result){
         this.dataTours = result;
+      }
+    },
+    async handleDelete(){
+      const result = await deleteTour({
+        ids : this.selectedRows
+      });
+      if(result){
+        await this.loadTours();
       }
     }
   },

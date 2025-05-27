@@ -26,7 +26,7 @@
                     <path fill="currentColor" fill-rule="evenodd" d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10m-1 5v4h-4v2h4v4h2v-4h4v-2h-4v-4zm-7 5c0 4.41 3.59 8 8 8s8-3.59 8-8-3.59-8-8-8-8 3.59-8 8" clip-rule="evenodd"></path>
                   </svg>
                 </span>
-                <span>Tạo đơn hàng</span>
+                <span>Tạo sản phẩm</span>
               </span>
             </RouterLink>
           </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="relative rounded-md bg-white overflow-clip css-onvepv h-screen" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
                 outline: transparent solid 1px;}">
-
+<!--Khi khong co san pham nao-->
       <div class="h-[75vh] hidden">
         <div class="px-5 pb-16">
           <div class="flex flex-col -mx-5">
@@ -165,7 +165,7 @@
           </div>
         </div>
       </div>
-
+<!--Giao dien khi co san pham-->
       <ul class="flex flex-wrap border-b border-[#e8eaeb]">
         <li v-for="(label, key) in tabLabel" :key="key" class="flex p-0 m-0 relative">
           <button

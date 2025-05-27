@@ -11,6 +11,8 @@ import VueSplide from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import HighchartsVue from 'highcharts-vue'
 import Editor from '@tinymce/tinymce-vue'
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 const Fa = Object.values({ ...FaIcons });
 addIcons(...Fa);
@@ -20,6 +22,7 @@ const app = createApp(App)
 registerGlobalComponents(app)
 app.component("v-icon", OhVueIcon);
 app.component('Editor', Editor)
+app.component('VueDatePicker', VueDatePicker);
 app.use(ElementPlus)
 app.use(router)
 app.use( VueSplide );
