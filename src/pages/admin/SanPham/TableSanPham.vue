@@ -47,9 +47,9 @@
                     </span>
                   </span>
               </button>
-              <button v-if="hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
+              <RouterLink :to="{ name : 'edit_product', params: { id : selectedRows[0]}}" v-if="hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
                 <span>Sửa</span>
-              </button>
+              </RouterLink>
             </th>
             <th class="bg-[#f4f6f8] py-3.5 px-4 max-w-[300px] text-left font-550 whitespace-nowrap">
               <button v-if="!hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
@@ -156,7 +156,7 @@
             <td class="text-left whitespace-nowrap py-2 px-4">
               <div class="flex flex-wrap items-stretch justify-start -mt-4 -ml-4 ">
                 <div class="mt-4 ml-4 max-w-full ">
-                  <span class="font-450">{{ item.priceAdult }}</span>
+                  <span class="font-450">{{ item.price_adult }}</span>
                 </div>
               </div>
             </td>

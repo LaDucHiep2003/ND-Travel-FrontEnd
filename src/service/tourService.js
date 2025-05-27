@@ -29,3 +29,12 @@ export const deleteTour = async (params) => {
     const result = await del(`tours?${query}`);
     return result;
 }
+
+export const getDetailTour = async (id) =>{
+    const result = await get(`tours/${id}`)
+    return result;
+}
+export const editTour = async (option) =>{
+    const result = await patch(`tours`, option)
+    return result;
+}

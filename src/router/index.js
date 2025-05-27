@@ -27,6 +27,7 @@ import KhachHang from "@/pages/admin/KhachHang/KhachHang.vue";
 import NhomKhachHang from "@/pages/admin/KhachHang/NhomKhachHang.vue";
 import TaoDonHang from "@/pages/admin/DonHang/TaoDonHang.vue";
 import TaoSanPham from "@/pages/admin/SanPham/TaoSanPham.vue";
+import SuaSanPham from "@/pages/admin/SanPham/SuaSanPham.vue";
 
 const routes = [
     {
@@ -145,6 +146,11 @@ const routes = [
                 path: "products/create",
                 component: TaoSanPham,
                 name : "create_product",
+            },
+            {
+                path: "products/edit/:id",
+                component: SuaSanPham,
+                name : "edit_product",
             },
             {
                 path: "collections",
