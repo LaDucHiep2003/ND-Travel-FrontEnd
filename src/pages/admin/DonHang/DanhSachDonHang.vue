@@ -208,6 +208,9 @@ export default {
     LocDonHang,
     TableDonHang,
     PhanTrang
+  },
+  mounted() {
+    console.log("Route name:", this.$route.name);
   }
 }
 </script>

@@ -189,26 +189,15 @@
 </template>
 
 <script>
-import {deleteTour, getTours} from "@/service/tourService.js";
+import {deleteTour} from "@/service/tourService.js";
 
 export default {
   data() {
     return {
-      dataTours : [],
       selectedRows: []
     }
   },
   methods:{
-    async loadTours(){
-      const params = {
-        status : this.status,
-        title : this.searchText
-      }
-      const result = await getTours(params);
-      if(result){
-        this.dataTours = result;
-      }
-    },
     async handleDelete(){
       const result = await deleteTour({
         ids : this.selectedRows
@@ -224,16 +213,9 @@ export default {
     },
   },
   props:{
-    status:{
-      type : String
-    },
-    searchText: {
-      type: String,
-      default: ''
+    dataTours:{
+      type : Array,
     }
   },
-  mounted() {
-    this.loadTours();
-  }
 }
 </script>

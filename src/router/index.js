@@ -21,13 +21,15 @@ import DonHangNhap from "@/pages/admin/DonHang/DonHangNhap.vue";
 import TraHang from "@/pages/admin/DonHang/TraHang.vue";
 import DonChuaHoanTat from "@/pages/admin/DonHang/DonChuaHoanTat.vue";
 import DanhSachSanPham from "@/pages/admin/SanPham/DanhSachSanPham.vue";
-import DanhMucSanPham from "@/pages/admin/SanPham/DanhMucSanPham.vue";
+import DanhMucSanPham from "@/pages/admin/DanhMuc/DanhMucSanPham.vue";
 import BangGia from "@/pages/admin/SanPham/BangGia.vue";
 import KhachHang from "@/pages/admin/KhachHang/KhachHang.vue";
 import NhomKhachHang from "@/pages/admin/KhachHang/NhomKhachHang.vue";
 import TaoDonHang from "@/pages/admin/DonHang/TaoDonHang.vue";
 import TaoSanPham from "@/pages/admin/SanPham/TaoSanPham.vue";
 import SuaSanPham from "@/pages/admin/SanPham/SuaSanPham.vue";
+import TaoDanhMuc from "@/pages/admin/DanhMuc/TaoDanhMuc.vue";
+import SuaDanhMuc from "@/pages/admin/DanhMuc/SuaDanhMuc.vue";
 
 const routes = [
     {
@@ -161,6 +163,22 @@ const routes = [
                 },
             },
             {
+                path: "collections/create",
+                component: TaoDanhMuc,
+                name : "create_collection",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "collections/edit/:id",
+                component: SuaDanhMuc,
+                name : "edit_collection",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
                 path: "catalogs",
                 component: BangGia,
                 name : "catalogs",
@@ -185,7 +203,6 @@ const routes = [
                 },
             },
         ],
-        strict: true,
     }
 ]
 

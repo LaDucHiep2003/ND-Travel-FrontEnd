@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[calc(100%-15rem)] fixed top-0 h-14 left-[15rem]">
+  <div class="w-[calc(100%-15rem)] fixed top-0 h-14 left-[15rem] ">
     <div class="bg-white shadow-box-4 relative">
       <div class="container mx-auto h-14 flex items-center justify-between gap-2">
         <div class="group max-w-[600px] w-full bg-white border border-transparent rounded-md

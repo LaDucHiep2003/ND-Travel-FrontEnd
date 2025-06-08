@@ -122,7 +122,8 @@
           <li class="flex flex-wrap relative font-medium">
             <div class="px-3 w-[15rem] flex-shrink-0">
               <RouterLink :to="{ name : 'products'}" class="flex flex-grow items-start p-[6px] text-left min-h-8 rounded-md text-color-19
-                focus:bg-color-18 hover:bg-color-20" :class="{ 'bg-color-20' : $route.name === 'products' || $route.name === 'create_product'}">
+                focus:bg-color-18 hover:bg-color-20"
+                          :class="{ 'bg-color-20' : $route.path === '/admin/products' || $route.path === '/admin/products/create'|| $route.path === '/admin/collections' || $route.path === '/admin/collections/create'}">
                 <div class="w-5 h-5 mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                     <path fill="currentColor" stroke="currentColor" stroke-width="0.5" d="m21.24 6.62-8.832-4.474-.003-.002a1.38 1.38 0 0 0-1.25.012l-3.789 2.01a1 1 0 0 0-.088.047l-4.54 2.41a1.37 1.37 0 0 0-.738 1.219v8.316c0 .514.283.981.738 1.22l8.413 4.465.003.002a1.38 1.38 0 0 0 1.25.011l8.836-4.477c.47-.235.761-.706.761-1.231v-8.296c0-.525-.291-.997-.76-1.231Zm-9.543-3.426a.2.2 0 0 1 .184-.002l8.267 4.189-3.217 1.602-8.083-4.277zm-.5 17.347-7.911-4.2-.004-.001a.2.2 0 0 1-.11-.182v-7.787l8.025 4.184zm.592-8.998-7.981-4.162 3.79-2.012 8.042 4.256zm9.04 4.605a.2.2 0 0 1-.113.183l-8.348 4.23v-7.998l3.844-1.914v2.007a.586.586 0 0 0 1.171 0v-2.59l3.447-1.716z"></path>
@@ -131,29 +132,23 @@
                 <span class="flex-1 ml-1 font-medium">Sản phẩm</span>
               </RouterLink>
             </div>
-            <div v-if="$route.name === 'products' || $route.name === 'create_product'">
+            <div v-if="$route.path === '/admin/products' || $route.path === '/admin/products/create' || $route.path === '/admin/collections' || $route.path === '/admin/collections/create'">
               <ul>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
                     <RouterLink :to="{ name : 'products'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                                :class="{'text-color-21 bg-color-20' : $route.name === 'products'}">
+                                :class="{'text-color-21 bg-color-20' : $route.path === '/admin/products' || $route.path === '/admin/products/create'}">
                       <span class="ml-1">Danh sách sản phẩm</span>
                     </RouterLink>
                   </div>
                 </li>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink :to="{ name : 'collections'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
+                    <RouterLink :to="{ name : 'collections'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18
+                      hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
+                                :class="{'text-color-21 bg-color-20' : $route.path === '/admin/collections' || $route.path ==='/admin/collections/create'}"
                     >
                       <span class="ml-1">Danh mục sản phẩm</span>
-                    </RouterLink>
-                  </div>
-                </li>
-                <li class="flex flex-wrap relative">
-                  <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink :to="{ name : 'catalogs'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                    >
-                      <span class="ml-1">Bảng giá</span>
                     </RouterLink>
                   </div>
                 </li>
@@ -370,11 +365,7 @@
   </aside>
 </template>
 <script>
-export default {
-  mounted() {
-    console.log("Route name:", this.$route.name);
-  }
-}
+
 </script>
 
 <style scoped>

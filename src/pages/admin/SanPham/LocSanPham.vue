@@ -11,7 +11,8 @@
                   </svg>
                 </span>
             </div>
-            <input v-model="searchText" type="text" class="focus:outline-none pl-0 w-full resize-none text-left border border-transparent min-h-9
+            <input v-model="searchText" @input="emitSearch"
+                   type="text" class="focus:outline-none pl-0 w-full resize-none text-left border border-transparent min-h-9
                   py-2 px-3" placeholder="Tìm kiếm theo mã tour hoặc tên tour" />
             <div class="absolute rounded-md border border-color-29 inset-0 pointer-events-none z-10"></div>
           </div>
@@ -301,10 +302,8 @@ export default {
     }
   },
   methods: {
-    applyFilter() {
-      this.$emit('filter', {
-        search: this.searchText.trim()
-      })
+    emitSearch() {
+      this.$emit('search', this.searchText)
     }
   }
 }

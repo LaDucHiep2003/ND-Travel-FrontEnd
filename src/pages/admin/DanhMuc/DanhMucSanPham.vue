@@ -18,7 +18,7 @@
             </button>
           </div>
           <div class="ml-4">
-            <RouterLink :to="{ name : 'create_product'}" class="flex justify-center items-center relative text-center rounded-md min-w-9 min-h-9 py-[7px]
+            <RouterLink :to="{ name : 'create_collection'}" class="flex justify-center items-center relative text-center rounded-md min-w-9 min-h-9 py-[7px]
                 px-4 border border-transparent text-white bg-color-28 hover:bg-[#33a0ff]">
               <span class="flex justify-center items-center relative font-550">
                 <span class="mr-1 h-5 w-5 block max-w-full max-h-full m-auto text-white">
@@ -26,7 +26,7 @@
                     <path fill="currentColor" fill-rule="evenodd" d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10m-1 5v4h-4v2h4v4h2v-4h4v-2h-4v-4zm-7 5c0 4.41 3.59 8 8 8s8-3.59 8-8-3.59-8-8-8-8 3.59-8 8" clip-rule="evenodd"></path>
                   </svg>
                 </span>
-                <span>Tạo sản phẩm</span>
+                <span>Thêm danh mục</span>
               </span>
             </RouterLink>
           </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="relative rounded-md bg-white overflow-clip css-onvepv h-screen" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
                 outline: transparent solid 1px;}">
-<!--Khi khong co san pham nao-->
+      <!--Khi khong co san pham nao-->
       <div class="h-[75vh] hidden">
         <div class="px-5 pb-16">
           <div class="flex flex-col -mx-5">
@@ -165,11 +165,11 @@
           </div>
         </div>
       </div>
-<!--Giao dien khi co san pham-->
+      <!--Giao dien khi co san pham-->
       <ul class="flex flex-wrap border-b border-[#e8eaeb]">
         <li v-for="(label, key) in tabLabel" :key="key" class="flex p-0 m-0 relative">
           <button
-              @click="handleChangeTab(key)"
+              @click="currentTab = key"
               class="appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap"
           >
       <span
@@ -184,63 +184,39 @@
         </li>
       </ul>
       <!--      Loc Don Hang-->
-      <LocSanPham @search="handleSearch"  />
-      <TableSanPham  :dataTours="dataTours" />
+      <LocSanPham @filter="handleFilter"  />
+      <TableDanhMuc  />
       <PhanTrang />
     </div>
   </div>
 </template>
 <script>
 import LocSanPham from "@/pages/admin/SanPham/LocSanPham.vue";
-import TableSanPham from "@/pages/admin/SanPham/TableSanPham.vue";
+import TableDanhMuc from "@/pages/admin/DanhMuc/TableDanhMuc.vue";
 import PhanTrang from "@/pages/admin/DonHang/PhanTrang.vue"
-import {getTours} from "@/service/tourService.js";
 export default {
   components:{
     LocSanPham,
-    TableSanPham,
+    TableDanhMuc,
     PhanTrang
   },
   data() {
     return {
       currentTab: 'all',
-      searchText: '',
-      dataTours : null
+      searchText: ''
     }
   },
   methods:{
-    handleSearch(keyword) {
-      this.searchText = keyword;
-      this.loadTours();
-    },
-    async loadTours(){
-      const params = {
-        title : this.searchText,
-        status : this.currentTab
-      }
-      const result = await getTours(params);
-      if(result){
-        this.dataTours = result;
-      }
-    },
-    handleChangeTab(key){
-      this.currentTab = key;
-      this.loadTours();
+    handleFilter(filter) {
+      this.searchText = filter.search
     }
   },
   computed: {
     tabLabel() {
       return {
         all: 'Tất cả',
-        active: 'Đang mở bán',
-        inactive: 'Đã khởi hành',
-        sold_out: 'Hết chỗ',
-        ended: 'Đã kết thúc'
       }
-    }
-  },
-  mounted() {
-    this.loadTours();
+    },
   }
 }
 </script>
