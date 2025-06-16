@@ -30,6 +30,9 @@ import TaoSanPham from "@/pages/admin/SanPham/TaoSanPham.vue";
 import SuaSanPham from "@/pages/admin/SanPham/SuaSanPham.vue";
 import TaoDanhMuc from "@/pages/admin/DanhMuc/TaoDanhMuc.vue";
 import SuaDanhMuc from "@/pages/admin/DanhMuc/SuaDanhMuc.vue";
+import DanhSachNhomQuyen from "@/pages/admin/NhomQuyen/DanhSachNhomQuyen.vue";
+import TaoNhomQuyen from "@/pages/admin/NhomQuyen/TaoNhomQuyen.vue";
+import SuaNhomQuyen from "@/pages/admin/NhomQuyen/SuaNhomQuyen.vue";
 
 const routes = [
     {
@@ -198,6 +201,30 @@ const routes = [
                 path: "customer_groups",
                 component: NhomKhachHang,
                 name : "customer_groups",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "roles",
+                component: DanhSachNhomQuyen,
+                name : "roles",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "roles/create",
+                component: TaoNhomQuyen,
+                name : "create_role",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "roles/edit/:id",
+                component: SuaNhomQuyen,
+                name : "edit_role",
                 meta : {
                     layout : "admin"
                 },

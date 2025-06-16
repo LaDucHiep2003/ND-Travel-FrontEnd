@@ -157,55 +157,31 @@
           </li>
           <li class="flex flex-wrap relative font-medium">
             <div class="px-3 w-[15rem] flex-shrink-0">
-              <RouterLink to="/" class="flex flex-grow items-start p-[6px] text-left min-h-8 rounded-md text-color-19
-                focus:bg-color-18 hover:bg-color-20">
+              <RouterLink :to="{ name : 'customers'}" class="flex flex-grow items-start p-[6px] text-left min-h-8 rounded-md text-color-19
+                focus:bg-color-18 hover:bg-color-20" :class="{ 'bg-color-20' : $route.path === '/admin/roles' || $route.path === '/admin/roles/create'}">
                 <div class="w-5 h-5 mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                    <path fill="currentColor" d="m20.591 6.619-7.255-4.02a2.74 2.74 0 0 0-2.671 0l-7.256 4.02a2.25 2.25 0 0 0-1.159 1.967v10.914a2.253 2.253 0 0 0 2.25 2.25h15a2.253 2.253 0 0 0 2.25-2.25v-10.914a2.25 2.25 0 0 0-1.159-1.967m-13.341 9.13h9.5v1.5h-9.5zm9.5-1.5h-9.5v-.75c0-.588.161-.75.75-.75h8c.589 0 .75.162.75.75zm-9.5 4.5h9.5v1.5h-9.5zm13 .75a.75.75 0 0 1-.75.75h-1.25v-6.75a2.067 2.067 0 0 0-2.25-2.25h-8a2.067 2.067 0 0 0-2.25 2.25v6.75h-1.25a.75.75 0 0 1-.75-.75v-10.913a.75.75 0 0 1 .386-.655l7.257-4.024a1.25 1.25 0 0 1 1.215 0l7.256 4.024a.75.75 0 0 1 .386.655zm-6-11.5a.75.75 0 0 1-.75.75h-3a.75.75 0 1 1 0-1.5h3a.75.75 0 0 1 .75.75"></path>
+                    <path fill="currentColor" d="M12.01 10.75a4.25 4.25 0 1 1 0-8.5 4.25 4.25 0 0 1 0 8.5m0-7a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5m3.99 18h-8c-2.42 0-3.753-1.325-3.753-3.731 0-2.662 1.506-5.769 5.75-5.769h4c4.244 0 5.75 3.107 5.75 5.769.003 2.406-1.33 3.731-3.747 3.731m-6-8a3.957 3.957 0 0 0-4.25 4.269c0 1.564.674 2.231 2.253 2.231h7.997c1.58 0 2.253-.667 2.253-2.231a3.96 3.96 0 0 0-4.253-4.269z"></path>
                   </svg>
                 </div>
-                <span class="flex-1 ml-1 font-medium">Quản lý kho</span>
+                <span class="flex-1 ml-1 font-medium">Nhóm quyền</span>
               </RouterLink>
             </div>
             <div>
               <ul>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink to="/" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                                :class="{'text-color-21 bg-color-20' : $route.name = 'dashboard'}">
-                      <span class="ml-1">Tồn kho</span>
+                    <RouterLink :to="{ name : 'roles'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
+                                :class="{'text-color-21 bg-color-20' : $route.path === '/admin/roles'}">
+                      <span class="ml-1">Danh sách nhóm quyền</span>
                     </RouterLink>
                   </div>
                 </li>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink to="/" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
+                    <RouterLink :to="{ name : 'collections'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
                     >
-                      <span class="ml-1">Đơn hàng nhập</span>
-                    </RouterLink>
-                  </div>
-                </li>
-                <li class="flex flex-wrap relative">
-                  <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink to="/" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                    >
-                      <span class="ml-1">Nhập hàng</span>
-                    </RouterLink>
-                  </div>
-                </li>
-                <li class="flex flex-wrap relative">
-                  <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink to="/" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                    >
-                      <span class="ml-1">Trả hàng nhập</span>
-                    </RouterLink>
-                  </div>
-                </li>
-                <li class="flex flex-wrap relative">
-                  <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink to="/" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                    >
-                      <span class="ml-1">Nhà cung cấp</span>
+                      <span class="ml-1">Nhóm khách hàng</span>
                     </RouterLink>
                   </div>
                 </li>

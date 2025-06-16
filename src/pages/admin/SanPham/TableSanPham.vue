@@ -199,12 +199,9 @@ export default {
   },
   methods:{
     async handleDelete(){
-      const result = await deleteTour({
+      await deleteTour({
         ids : this.selectedRows
       });
-      if(result){
-        await this.loadTours();
-      }
     }
   },
   computed:{
