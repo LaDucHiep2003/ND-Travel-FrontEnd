@@ -18,7 +18,7 @@
             </button>
           </div>
           <div class="ml-4">
-            <RouterLink :to="{ name : 'create_collection'}" class="flex justify-center items-center relative text-center rounded-md min-w-9 min-h-9 py-[7px]
+            <RouterLink :to="{ name : 'create_role'}" class="flex justify-center items-center relative text-center rounded-md min-w-9 min-h-9 py-[7px]
                 px-4 border border-transparent text-white bg-color-28 hover:bg-[#33a0ff]">
               <span class="flex justify-center items-center relative font-550">
                 <span class="mr-1 h-5 w-5 block max-w-full max-h-full m-auto text-white">
@@ -26,7 +26,7 @@
                     <path fill="currentColor" fill-rule="evenodd" d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10m-1 5v4h-4v2h4v4h2v-4h4v-2h-4v-4zm-7 5c0 4.41 3.59 8 8 8s8-3.59 8-8-3.59-8-8-8-8 3.59-8 8" clip-rule="evenodd"></path>
                   </svg>
                 </span>
-                <span>Thêm danh mục</span>
+                <span>Thêm nhóm quyền</span>
               </span>
             </RouterLink>
           </div>
@@ -185,6 +185,8 @@
       </ul>
 
       <LocNhomQuyen />
+
+      <TableNhomQuyen :dataRoles="dataRoles" />
     </div>
   </div>
 </template>
@@ -192,16 +194,36 @@
 <script>
 import PhanTrang from "@/pages/admin/DonHang/PhanTrang.vue";
 import LocNhomQuyen from "@/pages/admin/NhomQuyen/LocNhomQuyen.vue";
+import TableNhomQuyen from "@/pages/admin/NhomQuyen/TableNhomQuyen.vue";
+import {getTours} from "@/service/tourService.js";
+import {getRoles} from "@/service/roleService.js";
 export default {
   components:{
     PhanTrang,
-    LocNhomQuyen
+    LocNhomQuyen,
+    TableNhomQuyen
   },
   data() {
     return {
       currentTab: 'all',
-      searchText: ''
+      searchText: '',
+      dataRoles : []
     }
+  },
+  methods:{
+    handleSearch(keyword) {
+      this.searchText = keyword;
+      this.loadRoles();
+    },
+    async loadRoles(){
+      const params = {
+        title : this.searchText,
+      }
+      const result = await getRoles(params);
+      if(result){
+        this.dataRoles = result;
+      }
+    },
   },
   computed: {
     tabLabel() {
@@ -209,6 +231,9 @@ export default {
         all: 'Tất cả',
       }
     },
+  },
+  mounted() {
+    this.loadRoles();
   }
 }
 </script>
