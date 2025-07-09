@@ -47,7 +47,7 @@
                     </span>
                   </span>
             </button>
-            <RouterLink :to="{ name : 'edit_product', params: { id : selectedRows[0]}}" v-if="hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
+            <RouterLink :to="{ name : 'edit_role', params: { id : selectedRows[0]}}" v-if="hasSelection" class="appearance-none static inline-flex justify-center items-center font-550">
               <span>Sửa</span>
             </RouterLink>
           </th>
@@ -116,7 +116,7 @@
           <td class="text-left whitespace-nowrap py-2 px-4">
             <div class="flex flex-wrap items-stretch justify-start -mt-4 -ml-4 ">
               <div class="mt-4 ml-4 max-w-full ">
-                <span class="font-450">{{ item.description }}</span>
+                <span class="font-450" v-html="item.description"></span>
               </div>
             </div>
           </td>
@@ -128,7 +128,7 @@
 </template>
 
 <script>
-import {deleteTour} from "@/service/tourService.js";
+import {deleteRole} from "@/service/roleService.js";
 
 export default {
   data() {
@@ -138,7 +138,7 @@ export default {
   },
   methods:{
     async handleDelete(){
-      await deleteTour({
+      await deleteRole({
         ids : this.selectedRows
       });
     }
