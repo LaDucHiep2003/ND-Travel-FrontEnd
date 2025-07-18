@@ -33,6 +33,8 @@ import SuaDanhMuc from "@/pages/admin/DanhMuc/SuaDanhMuc.vue";
 import DanhSachNhomQuyen from "@/pages/admin/NhomQuyen/DanhSachNhomQuyen.vue";
 import TaoNhomQuyen from "@/pages/admin/NhomQuyen/TaoNhomQuyen.vue";
 import SuaNhomQuyen from "@/pages/admin/NhomQuyen/SuaNhomQuyen.vue";
+import ThemTaiKhoan from "@/pages/admin/KhachHang/ThemTaiKhoan.vue";
+import SuaTaiKhoan from "@/pages/admin/KhachHang/SuaTaiKhoan.vue";
 
 const routes = [
     {
@@ -193,6 +195,22 @@ const routes = [
                 path: "customers",
                 component: KhachHang,
                 name : "customers",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "customers/create",
+                component: ThemTaiKhoan,
+                name : "create_customers",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "customers/edit/:id",
+                component: SuaTaiKhoan,
+                name : "edit_customers",
                 meta : {
                     layout : "admin"
                 },

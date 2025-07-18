@@ -226,7 +226,6 @@ export default {
     },
     async handleSubmit(){
       const result = await editCategory(this.dataSent);
-      console.log(this.dataSent)
       if(result){
         this.$router.push({ name : 'collections'})
       }
@@ -260,7 +259,6 @@ export default {
     await this.loadOptionCategory()
 
     const selectedCategory = this.optionsCategory.find(option => option.value === this.dataSent.parentId);
-    console.log(this.dataSent)
     if(selectedCategory){
       this.selectedCategory = selectedCategory.label;
     }

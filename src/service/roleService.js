@@ -1,11 +1,11 @@
 import { get, patch, post, del } from "../utils/request";
 
-export const getRoles= async (params) => {
-    const filteredParams = Object.fromEntries(
-        Object.entries(params).filter(([_, value]) => value !== null && value !== undefined && value !== "")
-    );
-    const query = new URLSearchParams(filteredParams).toString();
-    const result = await get(`roles?${query}`);
+export const getRoles= async () => {
+    // const filteredParams = Object.fromEntries(
+    //     Object.entries(params).filter(([_, value]) => value !== null && value !== undefined && value !== "")
+    // );
+    // const query = new URLSearchParams(filteredParams).toString();
+    const result = await get(`roles`);
     return result;
 }
 

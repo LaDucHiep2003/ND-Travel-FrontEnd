@@ -411,7 +411,6 @@ export default {
       const result = await getDetailTour(this.$route.params.id);
       if(result){
         this.dataSent = result;
-        console.log(result)
       }
     },
     async loadCategories(){
