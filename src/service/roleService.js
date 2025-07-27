@@ -8,6 +8,10 @@ export const getRoles= async () => {
     const result = await get(`roles`);
     return result;
 }
+export const getPermissions= async () => {
+    const result = await get(`roles/permissions`);
+    return result;
+}
 
 export const deleteRole = async (params) => {
     const searchParams = new URLSearchParams();

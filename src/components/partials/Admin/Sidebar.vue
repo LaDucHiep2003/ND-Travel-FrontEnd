@@ -157,8 +157,9 @@
           </li>
           <li class="flex flex-wrap relative font-medium">
             <div class="px-3 w-[15rem] flex-shrink-0">
-              <RouterLink :to="{ name : 'customers'}" class="flex flex-grow items-start p-[6px] text-left min-h-8 rounded-md text-color-19
-                focus:bg-color-18 hover:bg-color-20" :class="{ 'bg-color-20' : $route.path === '/admin/roles' || $route.path === '/admin/roles/create'}">
+              <RouterLink :to="{ name : 'roles'}" class="flex flex-grow items-start p-[6px] text-left min-h-8 rounded-md text-color-19
+                focus:bg-color-18 hover:bg-color-20" :class="{ 'bg-color-20' : $route.path === '/admin/roles' || $route.path === '/admin/roles/create'
+                  || $route.path === '/admin/roles/permissions'}">
                 <div class="w-5 h-5 mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                     <path fill="currentColor" d="M12.01 10.75a4.25 4.25 0 1 1 0-8.5 4.25 4.25 0 0 1 0 8.5m0-7a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5m3.99 18h-8c-2.42 0-3.753-1.325-3.753-3.731 0-2.662 1.506-5.769 5.75-5.769h4c4.244 0 5.75 3.107 5.75 5.769.003 2.406-1.33 3.731-3.747 3.731m-6-8a3.957 3.957 0 0 0-4.25 4.269c0 1.564.674 2.231 2.253 2.231h7.997c1.58 0 2.253-.667 2.253-2.231a3.96 3.96 0 0 0-4.253-4.269z"></path>
@@ -179,7 +180,9 @@
                 </li>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                    <RouterLink :to="{ name : 'collections'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
+                    <RouterLink :to="{ name : 'permissions'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18
+                      hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
+                                :class="{'text-color-21 bg-color-20' : $route.path === '/admin/roles/permissions'}"
                     >
                       <span class="ml-1">Phân quyền</span>
                     </RouterLink>

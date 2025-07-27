@@ -216,12 +216,18 @@ export default {
       this.loadRoles();
     },
     async loadRoles(){
-      const params = {
-        title : this.searchText,
-      }
-      const result = await getRoles(params);
-      if(result){
-        this.dataRoles = result;
+      try{
+        const params = {
+          title : this.searchText,
+        }
+        const result = await getRoles(params);
+        if(result){
+          this.dataRoles = result;
+        }else{
+          alert(result.message)
+        }
+      }catch (e){
+        console.log("Error", e)
       }
     },
   },

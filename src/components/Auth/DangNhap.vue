@@ -7,25 +7,25 @@
 
             <div class="my-5">
                 <el-input
-                    v-model="input1"
+                    v-model="dataSent.username"
                     class=""
                     size="large"
-                    placeholder="Email"
+                    placeholder="Username"
                 />
                 <el-input
-                    v-model="input2"
+                    v-model="dataSent.password"
                     class=" mt-4"
                     size="large"
                     type="password"
                     placeholder="Mật khẩu"
                 />
-                <button class="px-5 h-11 bg-color-1 w-full text-white border border-color-1 rounded-lg text-base hover:text-color-1  
+                <button @click="login" class="px-5 h-11 bg-color-1 w-full text-white border border-color-1 rounded-lg text-base hover:text-color-1
                     hover:bg-white max-md:w-full mt-5">Đăng nhập</button>
 
                 <div class="mt-5">
                     <div>Quên mật khẩu</div>
                     <el-input
-                        v-model="input1"
+                        v-model="dataSent.password"
                         class="mt-10"
                         size="large"
                         placeholder="Email"
@@ -41,11 +41,42 @@
     </div>
 </template>
 
-<script setup>
-    import { ref } from 'vue';
-    import BreadCrumb from './BreadCrumb.vue';
-import { RouterLink } from 'vue-router';
+<script>
+import BreadCrumb from "@/components/DanhSachSanPham/BreadCrumb.vue";
+import Cookies from 'js-cookie';
+import {login} from "@/service/authService.js";
+    export default {
+      components:{
+        BreadCrumb
+      },
+      data(){
+        return{
+          dataSent:{
+            username : null,
+            password : null
+          }
+        }
+      },
+      methods:{
+        async login(){
+          try {
+            const result = await login(this.dataSent);
+            if(result.status === 200 && result.token){
+              Cookies.set("token",result.token);
 
-    const input1 = ref('');
-    const input2 = ref('')
+              const userRole = result.role;
+              if (userRole === 'ADMIN' || userRole === 'STAFF') {
+                this.$router.push({ name : 'dashboard'});
+              } else {
+                this.$router.push({ name : 'Home'});
+              }
+            }else {
+              alert(result.description || "Login failed");
+            }
+          }catch (e) {
+            console.log(e)
+          }
+        }
+      }
+    }
 </script>

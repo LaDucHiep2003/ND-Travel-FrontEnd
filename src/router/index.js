@@ -35,6 +35,8 @@ import TaoNhomQuyen from "@/pages/admin/NhomQuyen/TaoNhomQuyen.vue";
 import SuaNhomQuyen from "@/pages/admin/NhomQuyen/SuaNhomQuyen.vue";
 import ThemTaiKhoan from "@/pages/admin/KhachHang/ThemTaiKhoan.vue";
 import SuaTaiKhoan from "@/pages/admin/KhachHang/SuaTaiKhoan.vue";
+import PhanQuyen from "@/pages/admin/NhomQuyen/PhanQuyen.vue";
+import Cookies from "js-cookie";
 
 const routes = [
     {
@@ -111,7 +113,9 @@ const routes = [
         path : "/admin",
         component: LayoutPageAdmin,
         meta : {
-            layout : "admin"
+            layout : "admin",
+            requiresAuth: true,
+            allowedRoles: ['ADMIN', 'STAFF']
         },
         children: [
             {
@@ -247,10 +251,17 @@ const routes = [
                     layout : "admin"
                 },
             },
+            {
+                path: "roles/permissions",
+                component: PhanQuyen,
+                name : "permissions",
+                meta : {
+                    layout : "admin"
+                },
+            },
         ],
     }
 ]
-
 
 const router = createRouter({
     history: createWebHistory(),
@@ -262,6 +273,31 @@ const router = createRouter({
         return { top: 0 };
       }
     },
-  });
-  
-  export default router;
+});
+router.beforeEach((to, from, next) => {
+    const token = Cookies.get('token');
+
+    if (to.meta.requiresAuth) {
+        if (!token) return next('/auth/dang-nhap');
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const roles = payload.roles || [];
+
+            const allowedRoles = to.meta.allowedRoles || [];
+            const roleMatch = Array.isArray(roles)
+                ? roles.some(r => allowedRoles.includes(r))
+                : allowedRoles.includes(roles);
+
+            if (roleMatch) {
+                return next();
+            } else {
+                return next('/unauthorized');
+            }
+        } catch (e) {
+            console.error('Invalid token:', e);
+            return next('/auth/dang-nhap');
+        }
+    }
+    return next();
+});
+export default router;
