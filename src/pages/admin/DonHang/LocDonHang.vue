@@ -11,14 +11,22 @@
                     </svg>
                   </span>
             </div>
-            <input type="text" class="focus:outline-none pl-0 w-full resize-none text-left border border-transparent min-h-9
-                  py-2 px-3" placeholder="Tìm kiếm theo mã đơn hàng, vận đơn, SĐT khách hàng" />
+            <input
+                v-model="searchText"
+                @input="emitSearch"
+                type="text"
+                class="focus:outline-none pl-0 w-full resize-none text-left border border-transparent min-h-9
+                    py-2 px-3"
+                placeholder="Tìm kiếm theo mã đơn hàng, vận đơn, SĐT khách hàng" />
             <div class="absolute rounded-md border border-color-29 inset-0 pointer-events-none z-10"></div>
           </div>
         </div>
         <div class="ml-4 flex">
-          <div class="flex group relative group">
-            <button class="whitespace-nowrap inline-flex relative justify-center items-center text-center rounded-tl-md rounded-bl-md  min-w-9
+          <!-- Bộ lọc trạng thái giao hàng -->
+          <div class="flex group relative">
+            <button 
+              @click="toggleStatusFilter"
+              class="whitespace-nowrap inline-flex relative justify-center items-center text-center rounded-tl-md rounded-bl-md  min-w-9
                 min-h-9 py-[7px] px-4 border border-color-29 bg-white hover:bg-color-30">
                 <span class="flex justify-center items-center relative">
                   <span class="font-450">Trạng thái giao hàng</span>
@@ -31,7 +39,9 @@
                   </span>
                 </span>
             </button>
-            <div class="absolute top-full mt-1 w-full left-0 hidden group-focus-within:block">
+            <div 
+              v-show="showStatusFilter"
+              class="absolute top-full mt-1 w-full left-0 z-50">
               <div class="relative overflow-hidden border border-color-29 bg-white rounded-md isolate"
                    style="box-shadow: rgba(23, 24, 24, 0.08) 0px 3px 6px -3px, rgba(23, 24, 24, 0.12) 0px 8px 20px -4px;">
                 <div class="max-h-[400px] max-w-[500px] relative flex flex-col rounded-md">
@@ -44,7 +54,12 @@
                               <label for="status-1" class="inline-flex justify-start py-1 cursor-pointer">
                                   <span class="flex items-stretch w-5 h-5 mr-2">
                                     <span class="relative m-[1px] w-full">
-                                      <input type="checkbox" id="status-1" class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
+                                      <input 
+                                        v-model="selectedStatuses"
+                                        type="checkbox" 
+                                        id="status-1" 
+                                        value="cho-lay-hang"
+                                        class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
                                       <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
                                       <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
                                         <span class="block w-5 h-5 max-h-full max-w-full m-auto">
@@ -62,7 +77,12 @@
                               <label for="status-2" class="inline-flex justify-start py-1 cursor-pointer">
                                   <span class="flex items-stretch w-5 h-5 mr-2">
                                     <span class="relative m-[1px] w-full">
-                                      <input type="checkbox" id="status-2" class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
+                                      <input 
+                                        v-model="selectedStatuses"
+                                        type="checkbox" 
+                                        id="status-2" 
+                                        value="da-lay-hang"
+                                        class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
                                       <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
                                       <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
                                         <span class="block w-5 h-5 max-h-full max-w-full m-auto">
@@ -80,7 +100,12 @@
                               <label for="status-3" class="inline-flex justify-start py-1 cursor-pointer">
                                   <span class="flex items-stretch w-5 h-5 mr-2">
                                     <span class="relative m-[1px] w-full">
-                                      <input type="checkbox" id="status-3" class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
+                                      <input 
+                                        v-model="selectedStatuses"
+                                        type="checkbox" 
+                                        id="status-3" 
+                                        value="dang-giao-hang"
+                                        class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
                                       <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
                                       <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
                                         <span class="block w-5 h-5 max-h-full max-w-full m-auto">
@@ -98,7 +123,9 @@
                         </fieldset>
                       </div>
                       <div class="flex px-3 pb-3 justify-between">
-                        <button class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
+                        <button 
+                          @click="applyStatusFilter"
+                          class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
                             border-transparent text-white bg-color-28">
                           <span class="text-sm font-550">Lọc</span>
                         </button>
@@ -109,8 +136,12 @@
               </div>
             </div>
           </div>
-          <div class="flex group relative group">
-            <button class="whitespace-nowrap inline-flex relative justify-center items-center text-center min-w-9
+
+          <!-- Bộ lọc ngày tạo -->
+          <div class="flex group relative">
+            <button 
+              @click="toggleDateFilter"
+              class="whitespace-nowrap inline-flex relative justify-center items-center text-center min-w-9
                 min-h-9 py-[7px] px-4 border border-color-29 bg-white hover:bg-color-30">
                 <span class="flex justify-center items-center relative">
                   <span class="font-450">Ngày tạo</span>
@@ -123,7 +154,9 @@
                   </span>
                 </span>
             </button>
-            <div class="absolute top-full mt-1 w-[300px] left-1/2 -translate-x-1/2 hidden group-focus-within:block">
+            <div 
+              v-show="showDateFilter"
+              class="absolute top-full mt-1 w-[300px] left-1/2 -translate-x-1/2 z-50">
               <div class="relative overflow-hidden border border-color-29 bg-white rounded-md isolate"
                    style="box-shadow: rgba(23, 24, 24, 0.08) 0px 3px 6px -3px, rgba(23, 24, 24, 0.12) 0px 8px 20px -4px;">
                 <div class="max-h-[400px] max-w-[500px] relative flex flex-col rounded-md">
@@ -134,26 +167,34 @@
                           <div class="py-[2px]">
                             <div class="flex flex-wrap">
                               <div class="w-[calc(50%-8px)] m-1">
-                                <button class="w-full border border-color-29 relative inline-flex justify-center items-center
-                                        text-center rounded-md min-w-9 min-h-9 py-[7px] px-4 bg-white hover:bg-color-30">
+                                <button 
+                                  @click="selectDateRange('yesterday')"
+                                  :class="['w-full border border-color-29 relative inline-flex justify-center items-center text-center rounded-md min-w-9 min-h-9 py-[7px] px-4', 
+                                    selectedDateRange === 'yesterday' ? 'bg-color-28 text-white' : 'bg-white hover:bg-color-30']">
                                   <span>Hôm qua</span>
                                 </button>
                               </div>
                               <div class="w-[calc(50%-8px)] m-1">
-                                <button class="w-full border border-color-29 relative inline-flex justify-center items-center
-                                        text-center rounded-md min-w-9 min-h-9 py-[7px] px-4 bg-white hover:bg-color-30">
+                                <button 
+                                  @click="selectDateRange('today')"
+                                  :class="['w-full border border-color-29 relative inline-flex justify-center items-center text-center rounded-md min-w-9 min-h-9 py-[7px] px-4', 
+                                    selectedDateRange === 'today' ? 'bg-color-28 text-white' : 'bg-white hover:bg-color-30']">
                                   <span>Hôm nay</span>
                                 </button>
                               </div>
                               <div class="w-[calc(50%-8px)] m-1">
-                                <button class="w-full border border-color-29 relative inline-flex justify-center items-center
-                                        text-center rounded-md min-w-9 min-h-9 py-[7px] px-4 bg-white hover:bg-color-30">
+                                <button 
+                                  @click="selectDateRange('7days')"
+                                  :class="['w-full border border-color-29 relative inline-flex justify-center items-center text-center rounded-md min-w-9 min-h-9 py-[7px] px-4', 
+                                    selectedDateRange === '7days' ? 'bg-color-28 text-white' : 'bg-white hover:bg-color-30']">
                                   <span>7 ngày qua</span>
                                 </button>
                               </div>
                               <div class="w-[calc(50%-8px)] m-1">
-                                <button class="w-full border border-color-29 relative inline-flex justify-center items-center
-                                        text-center rounded-md min-w-9 min-h-9 py-[7px] px-4 bg-white hover:bg-color-30">
+                                <button 
+                                  @click="selectDateRange('30days')"
+                                  :class="['w-full border border-color-29 relative inline-flex justify-center items-center text-center rounded-md min-w-9 min-h-9 py-[7px] px-4', 
+                                    selectedDateRange === '30days' ? 'bg-color-28 text-white' : 'bg-white hover:bg-color-30']">
                                   <span>30 ngày qua</span>
                                 </button>
                               </div>
@@ -162,13 +203,17 @@
                         </fieldset>
                       </div>
                       <div class="flex px-3 pb-3 justify-between">
-                        <button class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
+                        <button 
+                          @click="showCustomDatePicker = true"
+                          class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
                             border-color-29 bg-white hover:bg-color-30">
                           <span class="text-sm font-450">Tùy chọn</span>
                         </button>
                       </div>
                       <div class="flex px-3 pb-3 justify-between">
-                        <button class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
+                        <button 
+                          @click="applyDateFilter"
+                          class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
                             border-transparent text-white bg-color-28">
                           <span class="text-sm font-550">Lọc</span>
                         </button>
@@ -179,8 +224,12 @@
               </div>
             </div>
           </div>
-          <div class="flex group relative group">
-            <button class="whitespace-nowrap inline-flex relative justify-center items-center text-center min-w-9
+
+          <!-- Bộ lọc khác -->
+          <div class="flex group relative">
+            <button 
+              @click="toggleOtherFilter"
+              class="whitespace-nowrap inline-flex relative justify-center items-center text-center min-w-9
                 min-h-9 py-[7px] px-4 border border-color-29 rounded-tr-md rounded-br-md bg-white hover:bg-color-30">
                 <span class="flex justify-center items-center relative">
                   <span class="mr-1 text-color-22 block w-5 h-5 max-w-full max-h-full m-auto">
@@ -191,9 +240,195 @@
                   <span class="font-450">Bộ lọc khác</span>
                 </span>
             </button>
+            <div 
+              v-show="showOtherFilter"
+              class="absolute top-full mt-1 w-[250px] left-1/2 -translate-x-1/2 z-50">
+              <div class="relative overflow-hidden border border-color-29 bg-white rounded-md isolate"
+                   style="box-shadow: rgba(23, 24, 24, 0.08) 0px 3px 6px -3px, rgba(23, 24, 24, 0.12) 0px 8px 20px -4px;">
+                <div class="max-h-[400px] max-w-[500px] relative flex flex-col rounded-md">
+                  <div class="flex-1 overflow-auto mx-w-full">
+                    <div class="flex flex-col">
+                      <div class="p-3">
+                        <fieldset>
+                          <ul>
+                            <li class="py-[2px]">
+                              <label for="filter-1" class="inline-flex justify-start py-1 cursor-pointer">
+                                  <span class="flex items-stretch w-5 h-5 mr-2">
+                                    <span class="relative m-[1px] w-full">
+                                      <input 
+                                        v-model="otherFilters"
+                                        type="checkbox" 
+                                        id="filter-1" 
+                                        value="urgent"
+                                        class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
+                                      <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
+                                      <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
+                                        <span class="block w-5 h-5 max-h-full max-w-full m-auto">
+                                          <svg class="text-[#0088ff] scale-125" xmlns="http://www.w3.org/2000/svg" fill="#0088ff" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                                            <path fill="currentColor" d="m10.853 12.635-1.482-1.452-1.6 1.634 3.09 3.025 5.371-5.315-1.607-1.625z"></path>
+                                          </svg>
+                                        </span>
+                                      </span>
+                                    </span>
+                                  </span>
+                                <span>Đơn hàng khẩn</span>
+                              </label>
+                            </li>
+                            <li class="py-[2px]">
+                              <label for="filter-2" class="inline-flex justify-start py-1 cursor-pointer">
+                                  <span class="flex items-stretch w-5 h-5 mr-2">
+                                    <span class="relative m-[1px] w-full">
+                                      <input 
+                                        v-model="otherFilters"
+                                        type="checkbox" 
+                                        id="filter-2" 
+                                        value="cod"
+                                        class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
+                                      <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
+                                      <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
+                                        <span class="block w-5 h-5 max-h-full max-w-full m-auto">
+                                          <svg class="text-[#0088ff] scale-125" xmlns="http://www.w3.org/2000/svg" fill="#0088ff" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                                            <path fill="currentColor" d="m10.853 12.635-1.482-1.452-1.6 1.634 3.09 3.025 5.371-5.315-1.607-1.625z"></path>
+                                          </svg>
+                                        </span>
+                                      </span>
+                                    </span>
+                                  </span>
+                                <span>Thanh toán COD</span>
+                              </label>
+                            </li>
+                          </ul>
+                        </fieldset>
+                      </div>
+                      <div class="flex px-3 pb-3 justify-between">
+                        <button 
+                          @click="applyOtherFilter"
+                          class="relative flex justify-center items-center text-center rounded-md w-full min-w-9 min-h-9 py-1.5 px-4 border
+                            border-transparent text-white bg-color-28">
+                          <span class="text-sm font-550">Lọc</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Overlay để đóng popup khi click bên ngoài -->
+    <div 
+      v-if="showStatusFilter || showDateFilter || showOtherFilter"
+      @click="closeAllFilters"
+      class="fixed inset-0 z-40">
+    </div>
   </div>
 </template>
+
+<script>
+import { ref, reactive } from 'vue'
+
+export default {
+  name: 'LocDonHang',
+  setup() {
+    // Reactive data
+    const showStatusFilter = ref(false)
+    const showDateFilter = ref(false)
+    const showOtherFilter = ref(false)
+    const selectedStatuses = ref([])
+    const selectedDateRange = ref('')
+    const otherFilters = ref([])
+    const showCustomDatePicker = ref(false)
+
+    // Methods
+    const toggleStatusFilter = () => {
+      showStatusFilter.value = !showStatusFilter.value
+      showDateFilter.value = false
+      showOtherFilter.value = false
+    }
+
+    const toggleDateFilter = () => {
+      showDateFilter.value = !showDateFilter.value
+      showStatusFilter.value = false
+      showOtherFilter.value = false
+    }
+
+    const toggleOtherFilter = () => {
+      showOtherFilter.value = !showOtherFilter.value
+      showStatusFilter.value = false
+      showDateFilter.value = false
+    }
+
+    const closeAllFilters = () => {
+      showStatusFilter.value = false
+      showDateFilter.value = false
+      showOtherFilter.value = false
+    }
+
+    const selectDateRange = (range) => {
+      selectedDateRange.value = range
+    }
+
+    const applyStatusFilter = () => {
+      // Thêm logic xử lý lọc theo trạng thái
+      showStatusFilter.value = false
+    }
+
+    const applyDateFilter = () => {
+      // Thêm logic xử lý lọc theo ngày
+      showDateFilter.value = false
+    }
+
+    const applyOtherFilter = () => {
+      // Thêm logic xử lý lọc khác
+      showOtherFilter.value = false
+    }
+
+    return {
+      showStatusFilter,
+      showDateFilter,
+      showOtherFilter,
+      selectedStatuses,
+      selectedDateRange,
+      otherFilters,
+      showCustomDatePicker,
+      toggleStatusFilter,
+      toggleDateFilter,
+      toggleOtherFilter,
+      closeAllFilters,
+      selectDateRange,
+      applyStatusFilter,
+      applyDateFilter,
+      applyOtherFilter
+    }
+  },
+  data(){
+    return {
+      searchText: '',
+    }
+  },
+  methods: {
+    emitSearch() {
+      this.$emit('search', this.searchText)
+    }
+  }
+}
+</script>
+
+<style scoped>
+/* Thêm transition cho popup */
+.group > div {
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Đảm bảo z-index cho popup */
+.z-50 {
+  z-index: 50;
+}
+
+.z-40 {
+  z-index: 40;
+}
+</style>

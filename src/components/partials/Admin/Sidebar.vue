@@ -60,14 +60,6 @@
                   </li>
                   <li class="flex flex-wrap relative">
                     <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
-                      <RouterLink :to="{ name : 'draft_orders'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                        :class="{'text-color-21 bg-color-20' : $route.name === 'draft_orders'}">
-                        <span class="ml-1">Đơn hành nháp</span>
-                      </RouterLink>
-                    </div>
-                  </li>
-                  <li class="flex flex-wrap relative">
-                    <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
                       <RouterLink :to="{ name : 'order_returns'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
                                   :class="{'text-color-21 bg-color-20' : $route.name === 'order_returns'}">
                         <span class="ml-1">Trả hàng</span>
@@ -168,7 +160,8 @@
                 <span class="flex-1 ml-1 font-medium">Nhóm quyền</span>
               </RouterLink>
             </div>
-            <div>
+            <div v-if="$route.path === '/admin/roles' || $route.path === '/admin/roles/permissions'
+                || $route.path === '/admin/roles/create'">
               <ul>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
@@ -203,12 +196,12 @@
                 <span class="flex-1 ml-1 font-medium">Tài khoản</span>
               </RouterLink>
             </div>
-            <div>
+            <div v-if="$route.path === '/admin/customers' || $route.path === '/admin/customers/create'">
               <ul>
                 <li class="flex flex-wrap relative">
                   <div class="px-3 pt-1 w-[15rem] flex-shrink-0 text-color-19">
                     <RouterLink :to="{ name : 'customers'}" class="pl-[34px] py-[6px] pr-[6px] focus:bg-color-18 hover:bg-color-20 flex flex-grow-1 text-left relative rounded-md"
-                                :class="{'text-color-21 bg-color-20' : $route.path === '/admin/customers'}">
+                                :class="{'text-color-21 bg-color-20' : $route.path === '/admin/customers' || $route.path === '/admin/customers/create'}">
                       <span class="ml-1">Khách hàng</span>
                     </RouterLink>
                   </div>

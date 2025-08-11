@@ -21,19 +21,19 @@
             </th>
             <th class="left-[52px] bg-[#f4f6f8] py-3.5 pr-4 pl-0 text-left font-550 text-sm whitespace-nowrap sticky w-5">
               <label for="status-3" class="inline-flex justify-start py-1 cursor-pointer">
-                    <span class="flex items-stretch w-5 h-5 mr-2">
-                      <span class="relative m-[1px] w-full">
-                        <input type="checkbox" id="status-3" class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
-                        <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
-                        <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
-                          <span class="block w-5 h-5 max-h-full max-w-full m-auto">
-                            <svg class="text-[#0088ff] scale-125" xmlns="http://www.w3.org/2000/svg" fill="#0088ff" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                              <path fill="currentColor" d="m10.853 12.635-1.482-1.452-1.6 1.634 3.09 3.025 5.371-5.315-1.607-1.625z"></path>
-                            </svg>
-                          </span>
+                  <span class="flex items-stretch w-5 h-5 mr-2">
+                    <span class="relative m-[1px] w-full">
+                      <input type="checkbox" id="status-3" class="cursor-pointer absolute w-full h-full opacity-0 m-0 peer">
+                      <span class="relative css-10dvs9w border-2 border-color-22 bg-white rounded-[4px] block w-full h-full peer-checked:border-color-25"></span>
+                      <span class="absolute top-1/2 left-1/2 opacity-0 scale-50 peer-checked:opacity-100 peer-checked:scale-100 transition-all duration-100 pointer-events-none transform -translate-x-1/2 -translate-y-1/2">
+                        <span class="block w-5 h-5 max-h-full max-w-full m-auto">
+                          <svg class="text-[#0088ff] scale-125" xmlns="http://www.w3.org/2000/svg" fill="#0088ff" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                            <path fill="currentColor" d="m10.853 12.635-1.482-1.452-1.6 1.634 3.09 3.025 5.371-5.315-1.607-1.625z"></path>
+                          </svg>
                         </span>
                       </span>
                     </span>
+                  </span>
               </label>
             </th>
             <th class="left-[88px] bg-[#f4f6f8] sticky py-3.5 px-4 text-left font-550 whitespace-nowrap">

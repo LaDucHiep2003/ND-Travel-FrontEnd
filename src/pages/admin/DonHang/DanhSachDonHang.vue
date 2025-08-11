@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="relative rounded-md bg-white overflow-clip css-onvepv h-screen" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+    <div class="relative rounded-md bg-white overflow-clip css-onvepv min-h-screen" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
                 outline: transparent solid 1px;}">
       <div class="h-[75vh] hidden">
         <div class="px-5 pb-16">
@@ -165,53 +165,123 @@
         </div>
       </div>
 
+      <!-- Tabs trạng thái đơn hàng -->
       <ul class="flex flex-wrap border-b border-[#e8eaeb]">
-        <li class="flex p-0 m-0 relative ">
-          <button class="appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap">
-            <span class="relative text-color-28 block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2">Tất cả</span>
+        <li class="flex p-0 m-0 relative">
+          <button 
+            @click="switchTab('all')"
+            :class="['appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap', 
+              activeTab === 'all' ? 'active-tab' : '']">
+            <span :class="['relative block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2', 
+              activeTab === 'all' ? 'text-color-28' : 'text-color-26']">Tất cả</span>
           </button>
         </li>
         <li class="flex p-0 m-0 relative">
-          <button class="appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 button-title-table text-center text-nowrap">
-            <span class="relative text-color-26 block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2">Chưa xử lý giao hàng</span>
+          <button 
+            @click="switchTab('pending')"
+            :class="['appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap', 
+              activeTab === 'pending' ? 'active-tab' : '']">
+            <span :class="['relative block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2', 
+              activeTab === 'pending' ? 'text-color-28' : 'text-color-26']">Chờ xác nhận</span>
           </button>
         </li>
         <li class="flex p-0 m-0 relative">
-          <button class="appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 button-title-table text-center text-nowrap">
-            <span class="relative text-color-26 block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2">Chờ lấy hàng</span>
+          <button 
+            @click="switchTab('confirmed')"
+            :class="['appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap', 
+              activeTab === 'confirmed' ? 'active-tab' : '']">
+            <span :class="['relative block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2', 
+              activeTab === 'confirmed' ? 'text-color-28' : 'text-color-26']">Xác nhận</span>
           </button>
         </li>
         <li class="flex p-0 m-0 relative">
-          <button class="appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 button-title-table text-center text-nowrap">
-            <span class="relative text-color-26 block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2">Đang giao hàng </span>
+          <button 
+            @click="switchTab('awaiting_payment')"
+            :class="['appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap', 
+              activeTab === 'awaiting_payment' ? 'active-tab' : '']">
+            <span :class="['relative block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2', 
+              activeTab === 'awaiting_payment' ? 'text-color-28' : 'text-color-26']">Chờ thanh toán</span>
           </button>
         </li>
         <li class="flex p-0 m-0 relative">
-          <button class="appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 button-title-table text-center text-nowrap">
-            <span class="relative text-color-26 block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2">Chưa thanh toán</span>
+          <button 
+            @click="switchTab('paid')"
+            :class="['appearance-none mt-[1px] mb-[-1px] text-color-26 relative w-full px-1 pt-1 pb-1.5 text-center text-nowrap', 
+              activeTab === 'paid' ? 'active-tab' : '']">
+            <span :class="['relative block rounded-md py-2 px-4 min-w-9 font-550 text-sm css-1hfoem2', 
+              activeTab === 'paid' ? 'text-color-28' : 'text-color-26']">Đã thanh toán</span>
           </button>
         </li>
       </ul>
-<!--      Loc Don Hang-->
-      <LocDonHang />
-      <TableDonHang />
+
+      <!-- Component lọc đơn hàng -->
+      <LocDonHang @search="handleSearch" />
+      
+      <!-- Component bảng đơn hàng với prop trạng thái -->
+      <TableDonHang :dataOrder="dataOrder" />
+      
+      <!-- Component phân trang -->
       <PhanTrang />
     </div>
   </div>
 </template>
+
 <script>
+import {onMounted, ref} from 'vue'
 import LocDonHang from "@/pages/admin/DonHang/LocDonHang.vue";
 import TableDonHang from "@/pages/admin/DonHang/TableDonHang.vue";
 import PhanTrang from "@/pages/admin/DonHang/PhanTrang.vue"
+import {getOrders} from "@/service/orderService.js";
+
 export default {
+  name: 'DanhSachDonHang',
   components:{
     LocDonHang,
     TableDonHang,
     PhanTrang
   },
-  mounted() {
-    console.log("Route name:", this.$route.name);
-  }
+  setup() {
+    // Reactive data để quản lý tab active
+    const activeTab = ref('all')
+    const dataOrder = ref([]);
+    const searchText = ref('');
+
+    // Method để chuyển đổi tab
+    const switchTab = (tabName) => {
+      activeTab.value = tabName
+      loadOrdersByStatus()
+    }
+
+    // Method để load đơn hàng theo trạng thái
+    const loadOrdersByStatus = async () => {
+      const params = {
+        fullName : searchText.value,
+        status : activeTab.value
+      }
+      const result = await getOrders(params);
+      if(result){
+        dataOrder.value = result;
+      }
+    }
+
+    const handleSearch = (keyword) =>{
+      searchText.value = keyword;
+      loadOrdersByStatus()
+    }
+
+    onMounted(() =>{
+      loadOrdersByStatus()
+    })
+
+
+    return {
+      activeTab,
+      switchTab,
+      loadOrdersByStatus,
+      dataOrder,
+      handleSearch,
+    }
+  },
 }
 </script>
 
@@ -251,8 +321,24 @@ export default {
   box-shadow: rgb(0, 136, 255) 0px 0px 0px -1px;
   border-radius: 6px;
 }
+
+/* Style cho tab active */
+.active-tab .css-1hfoem2::before {
+  background-color: rgb(0, 136, 255);
+}
+
+
 .button-title-table:hover span{
   color: rgb(15, 24, 36);
   background-color: transparent;
+}
+
+/* Transition cho tab switching */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+.css-1hfoem2 {
+  transition: color 0.2s ease-in-out;
 }
 </style>
