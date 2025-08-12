@@ -36,7 +36,9 @@ import SuaNhomQuyen from "@/pages/admin/NhomQuyen/SuaNhomQuyen.vue";
 import ThemTaiKhoan from "@/pages/admin/KhachHang/ThemTaiKhoan.vue";
 import SuaTaiKhoan from "@/pages/admin/KhachHang/SuaTaiKhoan.vue";
 import PhanQuyen from "@/pages/admin/NhomQuyen/PhanQuyen.vue";
+import TourDangDienRa from "@/pages/admin/LichTrinh/DanhSachTour.vue";
 import Cookies from "js-cookie";
+import LichTrinhChiTiet from "@/pages/admin/LichTrinh/LichTrinhChiTiet.vue";
 
 const routes = [
     {
@@ -255,6 +257,22 @@ const routes = [
                 path: "roles/permissions",
                 component: PhanQuyen,
                 name : "permissions",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "schedule",
+                component: TourDangDienRa,
+                name : "schedule_tour",
+                meta : {
+                    layout : "admin"
+                },
+            },
+            {
+                path: "schedule/:id",
+                component: LichTrinhChiTiet,
+                name : "schedule_tour_detail",
                 meta : {
                     layout : "admin"
                 },

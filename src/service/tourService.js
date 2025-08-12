@@ -9,7 +9,10 @@ export const getTours = async (params) => {
     const result = await get(`tours?${query}`);
     return result;
 }
-
+export const getSchedule = async (tourId) => {
+    const result = await get(`schedule?tour=${tourId}`);
+    return result;
+}
 export const createTour = async (option) =>{
     const result = await post(`tours`, option);
     return result;
@@ -36,5 +39,9 @@ export const getDetailTour = async (id) =>{
 }
 export const editTour = async (option) =>{
     const result = await patch(`tours`, option)
+    return result;
+}
+export const confirmSchedule = async (id, status) =>{
+    const result = await patch(`schedule/${id}?status=${status}`);
     return result;
 }
