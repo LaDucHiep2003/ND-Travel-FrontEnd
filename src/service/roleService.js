@@ -5,11 +5,11 @@ export const getRoles= async () => {
     //     Object.entries(params).filter(([_, value]) => value !== null && value !== undefined && value !== "")
     // );
     // const query = new URLSearchParams(filteredParams).toString();
-    const result = await get(`roles`);
+    const result = await get(`admin/roles`);
     return result;
 }
 export const getPermissions= async () => {
-    const result = await get(`roles/permissions`);
+    const result = await get(`admin/roles/permissions`);
     return result;
 }
 
@@ -24,20 +24,20 @@ export const deleteRole = async (params) => {
         }
     }
     const query = searchParams.toString();
-    const result = await del(`roles?${query}`);
+    const result = await del(`admin/roles?${query}`);
     return result;
 }
 
 export const createRole = async (option) =>{
-    const result = await post(`role`, option);
+    const result = await post(`admin/role`, option);
     return result;
 }
 
 export const getDetailRole = async (id) =>{
-    const result = await get(`role/${id}`)
+    const result = await get(`admin/role/${id}`)
     return result;
 }
 export const editRole = async (option) =>{
-    const result = await patch(`role`, option)
+    const result = await patch(`admin/role`, option)
     return result;
 }

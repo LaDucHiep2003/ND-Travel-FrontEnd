@@ -101,6 +101,20 @@
                     </div>
                     <div class="w-1/2">
                       <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
+                        <label for="location" class="text-color-24 css-1ypmoi1">Vị trí</label>
+                      </div>
+                      <div class="flex items-center gap-2 relative font-450 text-sm">
+                        <input id="location" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
+                               type="text" v-model="dataSent.location" placeholder="Nhập link gg vị trí" style="box-shadow: none;outline: none;">
+                        <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4 ml-5">
+                  <div class="flex justify-between items-center gap-5">
+                    <div class="w-1/2">
+                      <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
                         <label class="text-color-24 css-1ypmoi1">Ngày khởi hành</label>
                       </div>
                       <div class="relative font-450 text-sm w-full">
@@ -112,16 +126,19 @@
                         />
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="mt-4 ml-5">
-                  <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
-                    <label for="location" class="text-color-24 css-1ypmoi1">Vị trí</label>
-                  </div>
-                  <div class="flex items-center gap-2 relative font-450 text-sm">
-                    <input id="location" class="resize-none z-30 w-full text-left border min-h-9 py-2 px-3 rounded-md"
-                           type="text" v-model="dataSent.location" placeholder="Nhập link gg vị trí" style="box-shadow: none;outline: none;">
-                    <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
+                    <div class="w-1/2">
+                      <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
+                        <label class="text-color-24 css-1ypmoi1">Ngày kết thúc</label>
+                      </div>
+                      <div class="relative font-450 text-sm w-full">
+                        <VueDatePicker
+                            v-model="dataSent.end_date"
+                            :enable-time-picker="false"
+                            input-class="border min-h-9 py-2 px-3 rounded-md w-full text-left"
+                            placeholder="Chọn ngày khởi hành"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="mt-4 ml-5">
@@ -167,7 +184,7 @@
               <h2>Thông tin về giá</h2>
             </div>
             <div class="p-5">
-              <div class="-mt-4 -ml-4">
+              <div class="-mt-4 -ml-4 mb-5">
                 <div class="mt-4 ml-5">
                   <div class="flex justify-between items-center gap-5">
                     <div class="w-1/2">
@@ -188,6 +205,7 @@
                       <div class="flex items-center gap-2 relative font-450 text-sm">
                         <input id="price_child" class="resize-none bg-transparent z-30 w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
                                type="number" v-model="dataSent.price_child" placeholder="Nhập giá trẻ em" style="box-shadow: none;outline: none;">
+                        <div class="relative z-20 text-color-26 ml-1 mr-3">₫</div>
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
@@ -205,6 +223,17 @@
                         <input id="price_infant" class="resize-none z-30 bg-transparent w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
                                type="number" v-model="dataSent.price_infant" placeholder="Nhập giá cho người lớn" style="box-shadow: none;outline: none;">
                         <div class="relative z-20 text-color-26 ml-1 mr-3">₫</div>
+                        <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
+                      </div>
+                    </div>
+                    <div class="w-1/2">
+                      <div class="break-words flex flex-wrap justify-between items-baseline pb-1 ">
+                        <label for="price_infant" class="text-color-24 css-1ypmoi1">Giảm giá</label>
+                      </div>
+                      <div class="flex items-center gap-2 relative font-450 text-sm">
+                        <input id="price_infant" class="resize-none z-30 bg-transparent w-full text-left min-h-9 py-2 px-3 rounded-md border border-transparent overflow-clip"
+                               type="number" v-model="dataSent.price_infant" placeholder="Nhập giá cho người lớn" style="box-shadow: none;outline: none;">
+                        <div class="relative z-20 text-color-26 ml-1 mr-3">%</div>
                         <div class="bg-white border border-color-29 z-10 absolute inset-0 pointer-events-none rounded-md"></div>
                       </div>
                     </div>
@@ -404,6 +433,7 @@ export default {
         price_child : 0,
         price_infant : 0,
         departure_date : new Date(),
+        end_date : new Date(),
         category_id : [],
       },
       format : 'YYYY-MM-DD',

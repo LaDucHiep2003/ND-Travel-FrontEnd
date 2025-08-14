@@ -5,7 +5,7 @@ export const getUser= async (params) => {
         Object.entries(params).filter(([_, value]) => value !== null && value !== undefined && value !== "")
     );
     const query = new URLSearchParams(filteredParams).toString();
-    const result = await get(`users?${query}`);
+    const result = await get(`admin/users?${query}`);
     return result;
 }
 
@@ -20,20 +20,20 @@ export const deleteUser = async (params) => {
         }
     }
     const query = searchParams.toString();
-    const result = await del(`users?${query}`);
+    const result = await del(`admin/users?${query}`);
     return result;
 }
 
 export const createUser = async (option) =>{
-    const result = await post(`users`, option);
+    const result = await post(`admin/users`, option);
     return result;
 }
 
 export const getDetailUser = async (id) =>{
-    const result = await get(`users/${id}`)
+    const result = await get(`admin/users/${id}`)
     return result;
 }
 export const editUser = async (option) =>{
-    const result = await patch(`users`, option)
+    const result = await patch(`admin/users`, option)
     return result;
 }

@@ -6,15 +6,15 @@ export const getTours = async (params) => {
         Object.entries(params).filter(([_, value]) => value !== null && value !== undefined && value !== "")
     );
     const query = new URLSearchParams(filteredParams).toString();
-    const result = await get(`tours?${query}`);
+    const result = await get(`admin/tours?${query}`);
     return result;
 }
 export const getSchedule = async (tourId) => {
-    const result = await get(`schedule?tour=${tourId}`);
+    const result = await get(`admin/schedule?tour=${tourId}`);
     return result;
 }
 export const createTour = async (option) =>{
-    const result = await post(`tours`, option);
+    const result = await post(`admin/tours`, option);
     return result;
 }
 
@@ -29,19 +29,19 @@ export const deleteTour = async (params) => {
         }
     }
     const query = searchParams.toString();
-    const result = await del(`tours?${query}`);
+    const result = await del(`admin/tours?${query}`);
     return result;
 }
 
 export const getDetailTour = async (id) =>{
-    const result = await get(`tours/${id}`)
+    const result = await get(`admin/tours/${id}`)
     return result;
 }
 export const editTour = async (option) =>{
-    const result = await patch(`tours`, option)
+    const result = await patch(`admin/tours`, option)
     return result;
 }
 export const confirmSchedule = async (id, status) =>{
-    const result = await patch(`schedule/${id}?status=${status}`);
+    const result = await patch(`admin/schedule/${id}?status=${status}`);
     return result;
 }
