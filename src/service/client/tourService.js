@@ -9,3 +9,7 @@ export const getTours = async (params) => {
     const result = await get(`tours?${query}`);
     return result;
 }
+export const getDetailTour = async (id) =>{
+    const result = await get(`tours/${id}`)
+    return result;
+}

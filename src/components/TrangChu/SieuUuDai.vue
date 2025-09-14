@@ -90,7 +90,7 @@
               discountFrom : 10
             })
             if(result){
-              this.dataTour = result;
+              this.dataTour = result.data;
             }
           },
           formatPrice(value) {

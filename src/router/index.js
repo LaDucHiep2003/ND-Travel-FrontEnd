@@ -52,7 +52,7 @@ const routes = [
       name: "danh-sach-san-pham",
     },
     {
-      path: "/chi-tiet-tour",
+      path: "/tours/:id",
       component: ChiTietTour,
       name: "chi-tiet-tour",
     },

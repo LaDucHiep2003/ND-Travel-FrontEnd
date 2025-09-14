@@ -133,7 +133,7 @@ export default {
     async loadTours(cateId) {
       const result = await getTours({ category: cateId });
       if (result) {
-        this.dataTours[cateId] = result;
+        this.dataTours[cateId] = result.data;
       }
     }
   },

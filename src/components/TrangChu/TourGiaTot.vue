@@ -95,7 +95,7 @@ export default {
             price_adultTo : 5000000
           })
           if(result){
-            this.dataTours = result;
+            this.dataTours = result.data;
           }
         },
         formatPrice(value) {
